@@ -87,7 +87,7 @@ useOption = OptionAgentQ
 if useOption == OptionAgentQ:
     import AgentQ
     agent = AgentQ.AgentQ( 101 )
-    agent.setArch( layerSizes=[largestInputSize + 1, 1], learningRate=0.15, activation=nn.ReLU(), replayBufferSize=2**6, dropoutRate=0.0, epsilonExploration = 0.15 )
+    agent.setArch( layerSizes=[largestInputSize + 1, 64, 80, 48, 1], learningRate=0.15, activation=nn.ReLU(), replayBufferSize=2**6, dropoutRate=0.0, epsilonExploration = 0.15 )
     replaySampleBatch = 0
     pass
 

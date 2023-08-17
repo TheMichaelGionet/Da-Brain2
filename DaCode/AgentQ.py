@@ -98,7 +98,7 @@ class AgentQ(nn.Module):
                 leInput = torch.cat( ( observation, torch.tensor( [i], dtype=torch.float ) ), dim=-1 )
                 projectedReward = self.forward( leInput ).item()
 
-                print( f"projectedReward = {projectedReward}" )
+                #print( f"projectedReward = {projectedReward}" )
                 
                 if projectedReward > bestReward:
                     bestAction = i
@@ -110,25 +110,25 @@ class AgentQ(nn.Module):
 
     def updateWeights( self, reward ):
 
-        for name, param in self.model.named_parameters():
-            if param.requires_grad:
-                print( f"Layer:{name}, Shape: {param.shape}" )
-                print( param.data )
-                pass
-            pass
+        #for name, param in self.model.named_parameters():
+        #    if param.requires_grad:
+        #        print( f"Layer:{name}, Shape: {param.shape}" )
+        #        print( param.data )
+        #        pass
+        #    pass
 
         self.optimizer.zero_grad()
         loss = torch.tensor( -reward, requires_grad=True )
-        print( f"loss = {loss}" )
+        #print( f"loss = {loss}" )
         loss.backward()
         self.optimizer.step()
 
-        for name, param in self.model.named_parameters():
-            if param.requires_grad:
-                print( f"Layer:{name}, Shape: {param.shape}" )
-                print( param.data )
-                pass
-            pass
+        #for name, param in self.model.named_parameters():
+        #    if param.requires_grad:
+        #        print( f"Layer:{name}, Shape: {param.shape}" )
+        #        print( param.data )
+        #        pass
+        #    pass
 
         return
 
